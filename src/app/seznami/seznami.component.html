@@ -30,7 +30,28 @@
 
 <div>
     <h4>dodaj seznam</h4>
-    <button (click)="dodaj(seznam); $event.stopPropagation()">x
-    </button>
+    <div>
+        <form (ngSubmit)="submitForm()" ngNativeValidate>
+            <label for="opis">Postaja: </label>
+            <input [(ngModel)]="postaja_id" type="number" min="1" max="{{postaje.length}}" id="opis" name="opis" />
+            <span> {{ postaje.length == 0 ? "null" : postaje[postaja_id-1].ime }}</span>
+            <br>
+            
+                <label for="opis">Datum: </label>
+                <input matInput [(ngModel)]="termin_dan" type="date" name="dan" placeholder="datum">
+            <br />
+
+                <label for="opis">Od: </label>
+                <input matInput [(ngModel)]="termin_od" type="time" name="od" placeholder="do">
+            <br />
+
+                <label for="opis">Do: </label>
+                <input matInput [(ngModel)]="termin_do" type="time" name="do" placeholder="do">
+            <br />
+
+
+            <button type="submit">Dodaj</button>
+        </form>
+    </div>
 </div>
 

@@ -12,14 +12,16 @@ import {SeznamPodrobnostiComponent} from './seznami/seznam-podrobnosti.component
 import {SeznamiService} from './seznami/services/seznami.service';
 import { DatePipe } from './date.pipe';
 import { DatumPipe } from './datum.pipe';
-
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from '@danielmoncada/angular-datetime-picker';
 
 @NgModule({
     imports: [
         BrowserModule,
         HttpClientModule,
         AppRoutingModule,
-        FormsModule
+        FormsModule,
+        OwlDateTimeModule, 
+        OwlNativeDateTimeModule,
     ],
     declarations: [
         AppComponent,

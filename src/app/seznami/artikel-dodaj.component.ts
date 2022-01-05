@@ -31,10 +31,10 @@ export class ArtikelDodajComponent {
         this.sub.unsubscribe();
       }
 
-    submitForm(): void {
-        this.seznamiService.create(this.seznamId, this.artikel)
-            .subscribe(() => this.router.navigate(['/seznami/' + this.seznamId]));
-    }
+    // submitForm(): void {
+    //     this.seznamiService.create(this.seznamId, this.artikel)
+    //         .subscribe(() => this.router.navigate(['/seznami/' + this.seznamId]));
+    // }
 
     nazaj(): void {
         this.router.navigate(['/seznami']);

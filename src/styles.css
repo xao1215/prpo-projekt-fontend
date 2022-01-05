@@ -1,3 +1,5 @@
+@import "~@danielmoncada/angular-datetime-picker/assets/style/picker.min.css";
+
 h1 {
   color: #369;
   font-family: Arial, Helvetica, sans-serif;

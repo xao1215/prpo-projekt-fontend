@@ -13,12 +13,18 @@ export class SeznamiService {
 
     private headers = new HttpHeaders({'Content-Type': 'application/json'});
     private url = 'http://localhost:8080/v1/termini';
+    private urlp = 'http://localhost:8080/v1/postaje';
 
     constructor(private http: HttpClient) {
     }
 
     getTermini(): Observable<Termin[]> {
         return this.http.get<Termin[]>(this.url)
+                        .pipe(catchError(this.handleError));
+    }
+
+    getPostaje(): Observable<Postaja[]> {
+        return this.http.get<Postaja[]>(this.urlp)
                         .pipe(catchError(this.handleError));
     }
 
@@ -34,8 +40,8 @@ export class SeznamiService {
                         .pipe(catchError(this.handleError));
     }
 
-    create(seznamId: number, artikel: Termin): Observable<Termin> {
-        return this.http.post<Termin>(this.url + '/' + seznamId + '/artikli', JSON.stringify(artikel), {headers: this.headers})
+    create(objekt:any): Observable<Termin> {
+        return this.http.post<Termin>(this.url, objekt, {headers: this.headers})
                         .pipe(catchError(this.handleError));
     }
 

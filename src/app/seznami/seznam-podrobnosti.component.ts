@@ -34,16 +34,9 @@ export class SeznamPodrobnostiComponent implements OnInit {
     }
 
     prijava(): void{
-        let objekt = {
-            "dan": "2005-01-15",
-            "od_ura": "13:00:00",
-            "do_ura": "19:01:00",
-            "postaja_id": "2",
-            "uporabnik_id": "2"
-        }
 
         this.seznamService.prijava(this.seznam.id)
-        .subscribe(()=>{
+        .subscribe((termin)=>{
             this.nazaj()
         })
     }
