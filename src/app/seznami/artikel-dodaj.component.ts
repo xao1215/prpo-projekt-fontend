@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {Router, Params, ActivatedRoute} from '@angular/router';
 
 import {SeznamiService} from './services/seznami.service';
-import { Artikel } from './models/artikel';
+import { Termin } from './models/termin';
 import { switchMap } from 'rxjs/operators';
 
 @Component({
@@ -12,7 +12,7 @@ import { switchMap } from 'rxjs/operators';
 })
 export class ArtikelDodajComponent {
 
-    artikel: Artikel = new Artikel;
+    artikel: Termin = new Termin;
     seznamId: number;
     private sub: any;
 

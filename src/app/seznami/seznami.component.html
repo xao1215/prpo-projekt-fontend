@@ -1,11 +1,36 @@
-<h2>Nakupovalni seznami</h2>
+<h2>Termini</h2>
 
 <ul class="seznami">
     <li *ngFor="let seznam of seznami" (click)="naPodrobnosti(seznam)">
-        <span>{{seznam.naziv}}</span>
-        <button class="delete"
-                (click)="delete(seznam); $event.stopPropagation()">x
-        </button>
+        
+        <span style="float:left">
+            <!-- postaja: {{seznam.postaja.ime}} | -->
+             lokacija: {{seznam.postaja.lokacija}} |
+             {{ seznam.dan | datum }} {{seznam.od_ura | date}}-{{seznam.do_ura | date}} 
+        </span>
+        <span style="float:right">
+            <span style="float:left" *ngIf="seznam.uporabnik == null; else loading">
+                PROSTO
+            </span>
+            <ng-template #loading>
+                <span style="float:left">
+                    ZASEDENO
+                </span>
+            </ng-template>
+    
+            
+            <button style="float:right; margin-left:25px" class="delete"
+                    (click)="delete(seznam); $event.stopPropagation()">x
+            </button>
+
+        </span>
+        
     </li>
 </ul>
+
+<div>
+    <h4>dodaj seznam</h4>
+    <button (click)="dodaj(seznam); $event.stopPropagation()">x
+    </button>
+</div>
 

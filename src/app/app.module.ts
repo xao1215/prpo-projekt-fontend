@@ -10,6 +10,8 @@ import {SeznamiComponent} from './seznami/seznami.component';
 import {ArtikelDodajComponent} from './seznami/artikel-dodaj.component';
 import {SeznamPodrobnostiComponent} from './seznami/seznam-podrobnosti.component';
 import {SeznamiService} from './seznami/services/seznami.service';
+import { DatePipe } from './date.pipe';
+import { DatumPipe } from './datum.pipe';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import {SeznamiService} from './seznami/services/seznami.service';
         AppComponent,
         SeznamiComponent,
         SeznamPodrobnostiComponent,
-        ArtikelDodajComponent
+        ArtikelDodajComponent,
+        DatePipe,
+        DatumPipe
     ],
     providers: [SeznamiService],
     bootstrap: [AppComponent]

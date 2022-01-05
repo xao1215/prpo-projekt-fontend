@@ -1,15 +1,34 @@
 <div *ngIf="seznam">
 
-    <h3>{{seznam.naziv}}</h3>
-
-    <p>{{seznam.opis}}</p>
-    <p>Ustvarjen: {{seznam.ustvarjen | date: 'dd. MM. yyyy'}}</p>
-
-    <ul *ngFor="let artikel of seznam.artikli" class="artikli">
-        <li><b>{{artikel.naziv}}</b> <span *ngIf="artikel.opis"> &#8211; {{artikel.opis}}</span></li>
-    </ul>
+    <div style="border-bottom:1px solid black; width:50%">
+        <span>
+            <h2>
+                postaja: {{seznam.postaja.ime}},
+                 {{seznam.postaja.lokacija}} 
+            </h2>
+            <p>
+                <b>
+                    obratovanje: {{ seznam.postaja.obratovalni_cas }}
+                    <br>
+                    cena: €{{ seznam.postaja.cena_polnjenja }}/KWH
+                </b>
+                
+            </p>
+       </span>
+    </div>
+    
+   <br>
+   <span >
+       <h3>termin</h3>
+    {{ seznam.dan | datum }} {{seznam.od_ura | date}}-{{seznam.do_ura | date}} 
+    </span>
 
     <br>
-    <button (click)="dodajArtikel()">Dodaj artikel</button>
+
+    <span style="float:left" *ngIf="seznam.uporabnik == null">
+        <button (click)="prijava()">PRIJAVA</button>
+
+    </span>
+
     <button (click)="nazaj()">Nazaj</button>
 </div>

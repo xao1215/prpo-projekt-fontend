@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import { Termin } from './models/termin';
 
-import { NakupovalniSeznam } from './models/seznam';
+import { Postaja } from './models/postaja';
 import { SeznamiService } from './services/seznami.service';
 
 @Component({
@@ -10,8 +11,8 @@ import { SeznamiService } from './services/seznami.service';
     templateUrl: 'seznami.component.html'
 })
 export class SeznamiComponent implements OnInit {
-    seznami: NakupovalniSeznam[];
-    seznam: NakupovalniSeznam;
+    seznami: Termin[];
+    seznam: Termin;
 
     constructor(private seznamiService: SeznamiService,
                 private router: Router) {
@@ -23,19 +24,27 @@ export class SeznamiComponent implements OnInit {
 
     getSeznami(): void {
         this.seznamiService
-            .getSeznami()
-            .subscribe(seznami => this.seznami = seznami);
+            .getTermini()
+            .subscribe(seznami => {
+                this.seznami = seznami
+                console.log(this.seznami)
+            });
     }
 
-    naPodrobnosti(seznam: NakupovalniSeznam): void {
+    naPodrobnosti(seznam: Termin): void {
         this.seznam = seznam;
-        this.router.navigate(['/seznami', this.seznam.id]);
+        this.router.navigate(['/termini', this.seznam.id]);
     }
 
-    delete(seznam: NakupovalniSeznam): void {
+    delete(seznam: Postaja): void {
         this.seznamiService
             .delete(seznam.id)
-            .subscribe(seznamId => this.seznami = this.seznami.filter(s => s.id !== seznamId));
+            .subscribe(() => {
+                this.seznami = this.seznami.filter(s => s.id !== seznam.id)})
+    }
+
+    dodaj(nekaj:any):void{
+        console.log(nekaj)
     }
 
 }

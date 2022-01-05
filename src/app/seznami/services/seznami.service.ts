@@ -1,29 +1,30 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-import { NakupovalniSeznam } from '../models/seznam';
+import { Postaja } from '../models/postaja';
 import { Observable } from 'rxjs';
-
 import { catchError } from 'rxjs/operators';
-import { Artikel } from '../models/artikel';
+import { Termin } from '../models/termin';
+import { Uporabnik } from '../models/uporabnik';
+
 
 @Injectable()
 export class SeznamiService {
 
     private headers = new HttpHeaders({'Content-Type': 'application/json'});
-    private url = 'http://localhost:8080/v1/seznami';
+    private url = 'http://localhost:8080/v1/termini';
 
     constructor(private http: HttpClient) {
     }
 
-    getSeznami(): Observable<NakupovalniSeznam[]> {
-        return this.http.get<NakupovalniSeznam[]>(this.url)
+    getTermini(): Observable<Termin[]> {
+        return this.http.get<Termin[]>(this.url)
                         .pipe(catchError(this.handleError));
     }
 
-    getSeznam(id: number): Observable<NakupovalniSeznam> {
+    getTermin(id: number): Observable<Termin> {
         const url = `${this.url}/${id}`;
-        return this.http.get<NakupovalniSeznam>(url)
+        return this.http.get<Termin>(url)
                         .pipe(catchError(this.handleError));
     }
 
@@ -33,9 +34,21 @@ export class SeznamiService {
                         .pipe(catchError(this.handleError));
     }
 
-    create(seznamId: number, artikel: Artikel): Observable<Artikel> {
-        return this.http.post<Artikel>(this.url + '/' + seznamId + '/artikli', JSON.stringify(artikel), {headers: this.headers})
+    create(seznamId: number, artikel: Termin): Observable<Termin> {
+        return this.http.post<Termin>(this.url + '/' + seznamId + '/artikli', JSON.stringify(artikel), {headers: this.headers})
                         .pipe(catchError(this.handleError));
+    }
+
+    prijava(id:number):Observable<any>{
+        let objekt = `{
+            "dan": "2005-01-15",\
+            "od_ura": "13:00:00",\
+            "do_ura": "19:01:00",\
+            "postaja_id": "2",\
+            "uporabnik_id": "2"\
+        }`
+        return this.http.put<any>(this.url + '/' + id, objekt, {headers: this.headers})
+        .pipe(catchError(this.handleError));
     }
 
     private handleError(error: any): Promise<any> {
