@@ -1,0 +1,27 @@
+.custom-bg{
+    background: rgb(228,50,17);
+    background: linear-gradient(90deg, rgba(228,50,17,1) 0%, rgba(195,46,10,1) 100%);
+}
+.custom-text{
+    color:rgb(219, 219, 219);
+}
+.text-prosto{
+    color:rgb(53, 221, 90);
+}
+.text-zasedeno{
+    color:rgb(223, 47, 47);
+}
+
+.btn-hov:hover{
+    background: rgb(195,46,10);
+    background: linear-gradient(90deg, rgba(195,46,10,1) 0%, rgba(170,16,16,1) 100%);
+}
+
+.seznam{
+    background-color: rgb(16, 16, 24);
+    /* background: linear-gradient(90deg, rgba(21,22,38,1) 3%, rgba(18,21,29,1) 95%); */
+}
+.seznam:hover{
+    background-color: rgb(24, 24, 32);
+    cursor:pointer;
+}

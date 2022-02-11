@@ -19,16 +19,15 @@
     
    <br>
    <span >
-       <h3>termin</h3>
+       <h3>Termin</h3>
     {{ seznam.dan | datum }} {{seznam.od_ura | date}}-{{seznam.do_ura | date}} 
     </span>
 
     <br>
 
     <span style="float:left" *ngIf="seznam.uporabnik == null">
-        <button (click)="prijava()">PRIJAVA</button>
-
+        <button type="button" class="btn btn-dark me-2" (click)="prijava()">PRIJAVA</button>
     </span>
 
-    <button (click)="nazaj()">Nazaj</button>
+    <button type="button" class="btn btn-dark" (click)="nazaj()">Nazaj</button>
 </div>

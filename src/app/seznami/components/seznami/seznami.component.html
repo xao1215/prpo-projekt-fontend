@@ -1,10 +1,82 @@
-<h2>Termini</h2>
+<div id="termini" class="bg-dark rounded mb-4 shadow-sm p-2">
+    <h2 class="w-100 text-white ps-3 border-dark">Termini</h2>
+    <div *ngFor="let seznam of seznami" class="row p-2 m-0 my-1 rounded seznam" (click)="naPodrobnosti(seznam)">
 
+        <div class="col-sm-9 custom-text">
+            postaja: {{seznam.postaja.ime}} <div class="d-inline text-muted">|</div>
+            lokacija: {{seznam.postaja.lokacija}} <div class="d-inline text-muted">|</div>
+            {{ seznam.dan | datum }} {{seznam.od_ura | date}}-{{seznam.do_ura | date}} 
+        </div>
+
+        <div class="col text-end">
+            <div *ngIf="seznam.uporabnik == null; else zasedeno">
+                <p class="text-prosto d-inline">PROSTO</p>
+                <button type="button" class="ms-4 d-inline fw-bold text-black btn btn-hov custom-bg btn-sm float-end"
+                (click)="delete(seznam); $event.stopPropagation()">Zbrisi
+                </button>
+            </div>
+            <ng-template #zasedeno>
+                <div>
+                    <p class="text-zasedeno d-inline">ZASEDENO</p>
+                    <button type="button" class="ms-4 d-inline fw-bold text-black btn btn-hov custom-bg btn-sm float-end"
+                    (click)="delete(seznam); $event.stopPropagation()">Zbrisi
+                    </button>
+                </div>
+            </ng-template>
+        </div>
+
+    </div> 
+</div>
+
+
+<div class="col-sm-6">
+    <h4>Dodaj termin</h4>
+    <div>
+        <form (ngSubmit)="submitForm()" ngNativeValidate>
+
+            <div class="p-0 m-1 row">
+                <label for="opis" class="col-sm-2 col-form-label">Postaja:</label>
+                <div class="col-sm-2 pe-1">
+                    <input class="form-control" [(ngModel)]="postaja_id" type="number" min="1" max="{{postaje.length}}" id="opis" name="opis" >
+                </div>
+                <label class="col ps-0 col-form-label">{{ postaje.length == 0 ? "null" : postaje[postaja_id-1].ime }}</label>
+            </div>
+
+            <div class="p-0 m-1 row">
+                <label for="opis" class="col-sm-2 col-form-label">Datum:</label>
+                <div class="col-sm-6 pe-1">
+                    <input matInput class="form-control p-1 m-0" [(ngModel)]="termin_dan" type="date" name="dan" placeholder="datum">
+                </div>
+            </div>
+            
+            <div class="p-0 m-1 row">
+                <label for="opis" class="col-sm-2 col-form-label">Od:</label>
+                <div class="col-sm-6 pe-1">
+                    <input matInput class="form-control p-1 m-0" [(ngModel)]="termin_od" type="time" name="od" placeholder="do">
+                </div>
+            </div>
+
+            <div class="p-0 m-1 row">
+                <label for="opis" class="col-sm-2 col-form-label">Do:</label>
+                <div class="col-sm-6 pe-1">
+                    <input matInput class="form-control p-1 m-0" [(ngModel)]="termin_od" type="time" name="od" placeholder="do">
+                </div>
+            </div>
+
+            <div class="p-0 m-1 row">
+                <div class="col-sm-4 pe-1 ">
+                    <button class="btn btn-dark" type="submit">Dodaj</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- 
 <ul class="seznami">
     <li *ngFor="let seznam of seznami" (click)="naPodrobnosti(seznam)">
         
         <span style="float:left">
-            <!-- postaja: {{seznam.postaja.ime}} | -->
              lokacija: {{seznam.postaja.lokacija}} |
              {{ seznam.dan | datum }} {{seznam.od_ura | date}}-{{seznam.do_ura | date}} 
         </span>
@@ -26,32 +98,6 @@
         </span>
         
     </li>
-</ul>
+</ul> -->
 
-<div>
-    <h4>dodaj seznam</h4>
-    <div>
-        <form (ngSubmit)="submitForm()" ngNativeValidate>
-            <label for="opis">Postaja: </label>
-            <input [(ngModel)]="postaja_id" type="number" min="1" max="{{postaje.length}}" id="opis" name="opis" />
-            <span> {{ postaje.length == 0 ? "null" : postaje[postaja_id-1].ime }}</span>
-            <br>
-            
-                <label for="opis">Datum: </label>
-                <input matInput [(ngModel)]="termin_dan" type="date" name="dan" placeholder="datum">
-            <br />
-
-                <label for="opis">Od: </label>
-                <input matInput [(ngModel)]="termin_od" type="time" name="od" placeholder="do">
-            <br />
-
-                <label for="opis">Do: </label>
-                <input matInput [(ngModel)]="termin_do" type="time" name="do" placeholder="do">
-            <br />
-
-
-            <button type="submit">Dodaj</button>
-        </form>
-    </div>
-</div>
 
