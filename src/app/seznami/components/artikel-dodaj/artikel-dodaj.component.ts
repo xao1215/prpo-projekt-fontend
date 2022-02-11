@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {Router, Params, ActivatedRoute} from '@angular/router';
 
-import {SeznamiService} from './services/seznami.service';
-import { Termin } from './models/termin';
+import {SeznamiService} from '../../services/seznami.service';
+import { Termin } from '../../models/termin';
 import { switchMap } from 'rxjs/operators';
 
 @Component({

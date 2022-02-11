@@ -1,16 +1,17 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import { Termin } from './models/termin';
+import { Termin } from '../../models/termin';
 
-import { Postaja } from './models/postaja';
-import { SeznamiService } from './services/seznami.service';
+import { Postaja } from '../../models/postaja';
+import { SeznamiService } from '../../services/seznami.service';
 import { Time } from '@angular/common';
 import { NgForm } from '@angular/forms';
 
 @Component({
     moduleId: module.id,
     selector: 'vsi-seznami',
-    templateUrl: 'seznami.component.html'
+    templateUrl: 'seznami.component.html',
+    styleUrls: ['./seznami.component.css']
 })
 export class SeznamiComponent implements OnInit {
     seznami: Termin[];

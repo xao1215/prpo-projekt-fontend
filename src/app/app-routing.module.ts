@@ -1,9 +1,9 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
-import {SeznamiComponent} from './seznami/seznami.component';
-import {SeznamPodrobnostiComponent} from './seznami/seznam-podrobnosti.component';
-import { ArtikelDodajComponent } from './seznami/artikel-dodaj.component';
+import {SeznamiComponent} from './seznami/components/seznami/seznami.component';
+import {SeznamPodrobnostiComponent} from './seznami/components/seznam-podrobnosti/seznam-podrobnosti.component';
+import { ArtikelDodajComponent } from './seznami/components/artikel-dodaj/artikel-dodaj.component';
 
 const routes: Routes = [
     {path: '', redirectTo: '/termini', pathMatch: 'full'},

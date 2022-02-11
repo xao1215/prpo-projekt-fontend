@@ -1,4 +1,9 @@
 @import "~@danielmoncada/angular-datetime-picker/assets/style/picker.min.css";
+@import "~bootstrap/dist/css/bootstrap.css";
+
+body{
+  background-color:#1c212a
+}
 
 h1 {
   color: #369;

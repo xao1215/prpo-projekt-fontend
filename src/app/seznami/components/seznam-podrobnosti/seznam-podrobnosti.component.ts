@@ -3,10 +3,10 @@ import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Location} from '@angular/common';
 
 import { switchMap } from 'rxjs/operators';
-import {Termin} from './models/termin';
+import {Termin} from '../../models/termin';
 
-import {Postaja} from './models/postaja';
-import {SeznamiService} from './services/seznami.service';
+import {Postaja} from '../../models/postaja';
+import {SeznamiService} from '../../services/seznami.service';
 
 @Component({
     moduleId: module.id,

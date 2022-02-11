@@ -4,9 +4,10 @@ import {Component} from '@angular/core';
     moduleId: module.id,
     selector: 'prpo-app',
     template: `
-        <h1>{{naslov}}</h1>
+        <h1 class="text-warning">{{naslov}}</h1>
         <router-outlet></router-outlet>
-    `
+    `,
+    styleUrls: ['./app.component.css']
 })
 export class AppComponent {
     naslov = 'Polnilne postaje';
